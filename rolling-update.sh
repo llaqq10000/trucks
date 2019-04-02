@@ -1,7 +1,7 @@
 #!/bin/sh
 NAMESPACE=default
-DEPLOYMENT=tomcat-jcsj
-REGISTRY=10.246.103.111/dev/jcsj
+DEPLOYMENT=tomcat-8480
+REGISTRY=10.246.103.111/dev/tomcat-dev
 FILE=tomcat.yaml
 BUILD_NUMBER=1
 STATUS=$(kubectl get deployment -n $NAMESPACE |grep $DEPLOYMENT |wc -l)
