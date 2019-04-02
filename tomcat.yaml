@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tomcat-jcsj
+  namespace: default
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        k8s-app: tomcat-jcsj
+    spec:
+      containers:
+      - image: 10.246.103.111/dev/jcsj:vBUILD_NUMBER
+        name : tomcat-jcsj
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: app-logs
+          mountPath: /home/tomcat/logs
+      volumes:
+      - name: app-logs
+        emptyDir: {}
+      imagePullSecrets:
+        - name: harborsecret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tomcat-jcsj
+  labels:
+    k8s-app: tomcat-jcsj
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+    name: http
+    nodePort: 8480
+  selector:
+    k8s-app: tomcat-jcsj
