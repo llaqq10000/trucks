@@ -1,4 +1,4 @@
-FROM  10.246.103.111/dev/tomcat:latest
+FROM  reg.it.netease.com/dev/tomcat-jar:latest
 MAINTAINER wangchenglong@corp.netease/com
 RUN  rm -rf  /home/tomcat/webapps/*
 COPY target/*.war /home/tomcat/webapps/ROOT/
