@@ -11,7 +11,7 @@ spec:
         k8s-app: tomcat-8480
     spec:
       containers:
-      - image: 10.246.103.111/dev/tomcat-dev:vBUILD_NUMBER
+      - image: reg.it.netease.com/dev/tomcat-dev:vBUILD_NUMBER
         name : tomcat-8480
         imagePullPolicy: Always
         ports:
