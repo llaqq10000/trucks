@@ -30,6 +30,6 @@ spec:
     protocol: TCP
     targetPort: 8080
     name: http
-    nodePort:31111
+    nodePort: 31111
   selector:
     k8s-app: tomcat-8480
